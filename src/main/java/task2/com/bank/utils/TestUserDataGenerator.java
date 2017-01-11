@@ -14,8 +14,6 @@ import java.util.Map;
  */
 public class TestUserDataGenerator {
 
-
-
     private static final int HIGH_CURRENCY_BORDER = 3000;
     private static final int LOW_CURRENCY_BORDER = 0;
 

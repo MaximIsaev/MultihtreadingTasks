@@ -33,7 +33,6 @@ public class JsonUtils {
     public static void write(User user) {
         try {
             objectMapper.writeValue(new File(getFilePath(user.getId())), user);
-            logger.info("User added to file: " + getFilePath(user.getId()));
         } catch (IOException e) {
             logger.error(e);
         }
