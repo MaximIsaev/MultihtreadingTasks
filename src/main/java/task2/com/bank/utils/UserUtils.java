@@ -32,11 +32,11 @@ public class UserUtils {
         try {
             return JsonUtils.read(id);
         } catch (IOException e) {
-            throw new UserNotFoundException("User not found!");
+            return null;
         }
     }
 
-    public static synchronized void updateUser(User newUser) throws UserNotFoundException {
+    public static void updateUser(User newUser) throws UserNotFoundException {
         User oldUser;
         oldUser = findUser(newUser.getId());
         oldUser.setName(newUser.getName());

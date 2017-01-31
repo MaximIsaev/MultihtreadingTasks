@@ -2,13 +2,14 @@ package task2.com.bank.dto;
 
 import java.math.BigDecimal;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * @author Isaev_M.M. on 1/9/2017.
  */
 public class User {
 
-    public static long NUMBER_OF_USERS = 0;
+    public static AtomicLong NUMBER_OF_USERS = new AtomicLong(0);
 
 
     private String id;
@@ -53,7 +54,7 @@ public class User {
         return id;
     }
 
-    public static long getNumberOfUsers() {
+    public static AtomicLong getNumberOfUsers() {
         return NUMBER_OF_USERS;
     }
 
@@ -67,7 +68,7 @@ public class User {
 
     private void generateAndSetId() {
         this.id = String.valueOf(NUMBER_OF_USERS);
-        NUMBER_OF_USERS++;
+        NUMBER_OF_USERS.getAndIncrement();
     }
 
     @Override
