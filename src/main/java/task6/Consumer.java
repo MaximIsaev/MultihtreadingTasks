@@ -31,10 +31,12 @@ public class Consumer implements Runnable {
     private void consume() throws InterruptedException {
         while (sharedQueue.isEmpty()) {
             synchronized (sharedQueue) {
-                System.out.println("Queue is empty " + Thread.currentThread().getName()
-                        + " is waiting , size: " + sharedQueue.size());
+                if (sharedQueue.isEmpty()) {
+                    System.out.println("Queue is empty " + Thread.currentThread().getName()
+                            + " is waiting , size: " + sharedQueue.size());
 
-                sharedQueue.wait();
+                    sharedQueue.wait();
+                }
             }
         }
 
